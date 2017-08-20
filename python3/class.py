@@ -26,3 +26,59 @@ class Service:
 
 service = Service()
 print(service.text) # Hello world
+
+class Service2:
+    def __init__(self, name):
+        self.name = name
+
+service2=Service2("hi")
+print(service2.name)    # hi
+
+
+############ 
+# inherit
+class Car:
+    def __init__(self, sun_roof):
+        self.sun_roof = sun_roof
+    def drive(self):
+        print("Drive")
+        
+class Sonata(Car):
+    name = "sonata"
+
+sonata=Sonata("Sun roof")
+
+sonata.drive()
+print(sonata.name, sonata.sun_roof)
+# Drive
+# sonata Sun roof
+############
+
+
+#############
+# Overriding
+class Genesis(Car):
+    def drive(self):
+        print("Genesis Drive")
+genesis=Genesis("SunRoof")
+genesis.drive() # Genesis Drive
+#############
+
+#############
+# Operator overloading
+class Pride(Car):
+    def __add__(self, other):
+        self.drive()
+        other.drive()
+    def __sub__(self, other):
+        return
+    def __mul__(self, other):
+        return
+    def __truediv__(self, other):
+        return
+
+pride = Pride("SunRoof")
+pride + genesis
+# Drive
+# Genesis Drive
+#############
