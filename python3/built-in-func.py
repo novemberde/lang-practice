@@ -56,3 +56,46 @@ class Me(Person): pass
 print(isinstance(Person(), Me)) # False
 print(isinstance(Me(), Person)) # True
 
+
+print(len("abcde")) # 5
+print(len([1,2,3])) # 3
+print(len((1,2,3))) # 3
+
+
+
+print(list("1234")) # ['1', '2', '3', '4']
+print(list((1,2,3,4)))  # [1, 2, 3, 4]
+
+
+print(list(map(lambda a:a*2, [1,2,3,4])))   # [2, 4, 6, 8]
+
+print(max([1,2,3,4]))   # 4
+print(min([1,2,3,4]))   # 1
+
+print(oct(34))  # 0o42
+
+# open("filname", "r")
+# open("filname")   default is read
+# open("filname", "w")
+
+print(ord('a')) # 97   get ASKII code
+
+print(pow(3,3)) # 3*3*3 # 27
+
+print(list(range(4)))   # [0, 1, 2, 3]
+print(list(range(1,4))) # [1, 2, 3]
+print(list(range(1,4,2))) # [1, 3]
+
+# this is different from list.sort()
+print(sorted([4,2,1]))  # 1,2,4
+
+print(str(123123))  # "123123"
+
+
+print(tuple("abc")) # ('a', 'b', 'c')
+print(tuple(["a", "b", "c"])) # ('a', 'b', 'c')
+
+print(type("abc"))  # <class 'str'>
+print(type(open("test.txt", "r")))  # <class '_io.TextIOWrapper'>
+
+
