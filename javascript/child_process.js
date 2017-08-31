@@ -1,4 +1,4 @@
-const process = require("child_process");
+const childe_process = require("child_process");
 
 // console.log(process);
 
@@ -9,7 +9,7 @@ const process = require("child_process");
 
 const exec = command => {
   return new Promise((resolve, reject) => {
-    process.exec(command, (err, stdout, stderr) => {
+    childe_process.exec(command, (err, stdout, stderr) => {
       if(err) return reject(stderr);
       return resolve(stdout);
     });
