@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "fs": "0.0.1-security",
+    "superagent": "^3.6.0",
     "typescript": "^2.5.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/superagent": "^3.5.5",
+    "tslint": "^5.7.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "transpile": "node_modules/.bin/tsc",
