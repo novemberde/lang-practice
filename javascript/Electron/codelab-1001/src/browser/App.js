@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const url = require('url')
 const path = require('path');
 
@@ -14,7 +14,6 @@ class App {
   }
 
   _ready () {
-    console.log("Ready!");
 
     this._win = new BrowserWindow({
       show: false
@@ -22,6 +21,15 @@ class App {
 
     this._win.once('ready-to-show', this._win.show);
     this._win.loadURL(HTML);
+
+    // arg = { name: "HELLO" }
+    ipcMain.on('aChannel', (event, arg) => {
+      event.sender.send('bChannel', arg.name);
+    });
+    ipcMain.on('cChannel', (event, arg) => {
+      event.returnValue = arg.name;
+    });
+    
   }
 }
 
