@@ -1,4 +1,4 @@
-const {app, BrowserWindow, Tray}  = require("electron");
+const {app, BrowserWindow, Tray, Menu, MenuItem}  = require("electron");
 const url = require('url')
 const path = require('path');
 
@@ -13,13 +13,13 @@ app.on('ready', () => {
   
   // file protocol 없이 해도 됨.
   const tray = new Tray(path.join(__dirname, 'icon-16.png'));
-  tray.on('click', () => {
-
-    createWindow();
-  });
-  tray.on('right-click', () => {
-    win.hide();
-  });
+  tray.setContextMenu(getTrayMenu());
+  // tray.on('click', () => {
+  //   createWindow();
+  // });
+  // tray.on('right-click', () => {
+  //   win.hide();
+  // });
 
   
 
@@ -41,4 +41,21 @@ function createWindow () {
   }
 
   return win.show();
+}
+
+function getTrayMenu () {
+  return Menu.buildFromTemplate([
+    {
+      type: 'normal', // defaultType
+      label: "Open",
+      click: createWindow
+    },
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Quit',
+      click: app.quit
+    }
+  ]);
 }
