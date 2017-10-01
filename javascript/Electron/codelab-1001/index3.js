@@ -1,6 +1,7 @@
-const {app, BrowserWindow, Tray, Menu, MenuItem}  = require("electron");
+const {app, BrowserWindow, Tray, Menu, MenuItem, dialog}  = require("electron");
 const url = require('url')
 const path = require('path');
+const fs = require('fs');
 
 const HTML = url.format({
   protocol: 'file',
@@ -20,6 +21,7 @@ app.on('ready', () => {
   // tray.on('right-click', () => {
   //   win.hide();
   // });
+  createWindow();
 
   Menu.setApplicationMenu(getApplicationMenu());
 
@@ -80,6 +82,58 @@ function getTrayMenu () {
 function getApplicationMenu () {
   // default가 sub menu가 있어야함.
   return Menu.buildFromTemplate([
+    {
+      label: 'dialog',
+      submenu: [
+        {
+          label: 'open',
+          click: () => {
+            dialog.showOpenDialog({}, (paths) => {
+              if(paths !== undefined) {
+                const buffer = fs.readFileSync(paths[0]);
+                const object =  JSON.parse(buffer.toString());
+                console.log(object.name);
+              }
+            });
+          }
+        },
+        {
+          label: 'save',
+          click: () => {
+            dialog.showSaveDialog({
+              filters:[
+                {
+                  name: "this",
+                  extension: "json"
+                }
+              ]
+            }, (path) => {
+              if(path !== undefined) {
+                console.log(path);
+                fs.writeFileSync(path, JSON.stringify({name: "hi"}));
+              }
+            });
+            
+          }
+        },
+        {
+          label: 'message',
+          click: () => {
+            dialog.showMessageBox({
+              message: "경고!",
+              detail: "상세내용입니다.",
+              buttons: [
+                "확인",
+                "취소"
+              ],
+              cancelId: 1// 취소버튼
+            }, (id) => {
+              console.log(id);
+            });
+          }
+        },
+      ]
+    },
     {
       label: 'First',
       submenu: [
