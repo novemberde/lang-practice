@@ -2,6 +2,7 @@
 [https://nwjs.io/](https://nwjs.io/)
 [https://github.com/electron-userland](https://github.com/electron-userland)
 [https://electronforge.io/](https://electronforge.io/)
+[https://electron.atom.io/docs/api/menu-item/#roles](https://electron.atom.io/docs/api/menu-item/#roles)
 
 Electron: 1.7.8	Node: 7.9.0	Chromium: 58.0.3029.110	V8: 5.8.283.38
 

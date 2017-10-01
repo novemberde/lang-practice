@@ -21,7 +21,7 @@ app.on('ready', () => {
   //   win.hide();
   // });
 
-  
+  Menu.setApplicationMenu(getApplicationMenu());
 
 });
 
@@ -34,6 +34,7 @@ function createWindow () {
     win = new BrowserWindow({
       show: false
     });
+    win.loadURL(HTML);
 
     win.on('closed', () => {
       win = null;
@@ -56,6 +57,67 @@ function getTrayMenu () {
     {
       label: 'Quit',
       click: app.quit
+    },
+    {
+      label: 'Lecture',
+      submenu: [
+        {
+          label: "Electron"
+        },
+        {
+          type: "checkbox",
+          label: "CheckBox",
+          checked: true,
+          click: (e) => {
+            this.checked = !e.checked;
+          }
+        }
+      ]
+    }
+  ]);
+}
+
+function getApplicationMenu () {
+  // default가 sub menu가 있어야함.
+  return Menu.buildFromTemplate([
+    {
+      label: 'First',
+      submenu: [
+        {
+          label: '1'
+        },
+        {
+          label: '2'
+        }
+      ]
+    },
+    {
+      label: 'Second',
+      submenu: [
+        {
+          label: '1'
+        },
+        {
+          label: '2'
+        }
+      ]
+    },
+    {
+      label: 'Roles',
+      submenu: [
+        {
+          role: 'paste'
+        },
+        {
+          role: 'reload'
+        },
+        {
+          role: 'about'
+        },
+        {
+          role: 'toggledevtools'
+        }
+      ]
     }
   ]);
 }
