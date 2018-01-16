@@ -4,8 +4,22 @@ const test = () => {
         throw new Error("error asdfasd");
     });
 }
+const test2 = () => {
+    return Promise.resolve()
+    .then(() => {
+        throw new Error("test2 error");
+    });
+}
 
 test()
+.then( result => {
+    console.log(result);
+})
+.catch( err => {
+    console.error(err);
+});
+
+test2()
 .then( result => {
     console.log(result);
 })
