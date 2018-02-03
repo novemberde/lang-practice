@@ -29,6 +29,7 @@ func main() {
 	cards = append(cards, "Six of Spades")
 
 	cards.print()
+	// cards.println()
 }
 
 func newCard() string {
